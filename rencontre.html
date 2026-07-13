@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Première rencontre - Écho</title>
+<title>Écho - Première rencontre</title>
 
 <style>
+
 body {
-    margin: 0;
+    margin:0;
     font-family: Georgia, serif;
-    background: #faf7f2;
-    color: #3d3a36;
+    background:#faf7f2;
+    color:#3d3a36;
 }
 
 .container {
-    max-width: 700px;
-    margin: auto;
-    padding: 60px 20px;
-    text-align: center;
+    max-width:700px;
+    margin:auto;
+    padding:50px 20px;
 }
 
 .logo {
-    font-size: 42px;
-    letter-spacing: 5px;
-    font-weight: bold;
+    text-align:center;
+    font-size:42px;
+    letter-spacing:5px;
+    font-weight:bold;
 }
 
-.card {
-    background: white;
-    margin-top: 50px;
-    padding: 35px;
-    border-radius: 25px;
+.carnet {
+    background:white;
+    margin-top:40px;
+    padding:35px;
+    border-radius:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-h1 {
-    font-size: 32px;
+.message {
+    background:#f3eee5;
+    padding:18px;
+    border-radius:20px;
+    margin:15px 0;
+    text-align:left;
+    line-height:1.6;
 }
 
-p {
-    font-size: 20px;
-    line-height: 1.6;
+.user {
+    background:#e5efe5;
 }
 
 input {
-    width: 80%;
-    padding: 15px;
-    margin-top: 25px;
-    border-radius: 20px;
-    border: 1px solid #ddd;
-    font-size: 18px;
+    width:90%;
+    padding:15px;
+    border-radius:20px;
+    border:1px solid #ddd;
+    font-size:16px;
 }
 
 button {
-    margin-top: 25px;
-    padding: 15px 35px;
-    border: none;
-    border-radius: 30px;
-    background: #78977b;
-    color: white;
-    font-size: 18px;
-    cursor: pointer;
+    margin-top:20px;
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:#78977b;
+    color:white;
+    font-size:17px;
+    cursor:pointer;
 }
+
+#conversation {
+    display:none;
+}
+
 </style>
 
 </head>
+
 
 <body>
 
@@ -74,32 +86,77 @@ button {
 ÉCHO
 </div>
 
-<div class="card">
 
-<h1>
-Bonjour 👋
-</h1>
+<div class="carnet">
 
-<p>
-Je suis Écho.
-</p>
+<div id="welcome">
 
-<p>
-Je suis là pour apprendre à te connaître,
-écouter ton histoire et t'accompagner
-dans tes réflexions.
-</p>
+<div class="message">
+Bonjour 👋<br><br>
 
-<p>
-Il n'y a aucune obligation de tout raconter.
+Je suis Écho.<br><br>
+
+Je suis ici pour apprendre à te connaître,
+écouter ton histoire et t'accompagner dans tes réflexions.<br><br>
+
 Tu avances à ton rythme.
-</p>
+</div>
+
 
 <h2>
 Comment puis-je t'appeler ?
 </h2>
 
-<input type="text" placeholder="Ton prénom ou ton surnom">
+
+<input id="name" placeholder="Ton prénom ou surnom">
+
+
+<br>
+
+<button onclick="start()">
+Continuer
+</button>
+
+</div>
+
+
+
+<div id="conversation">
+
+
+<div class="message">
+Bonjour <span id="username"></span> 👋
+<br><br>
+
+Je suis heureux de faire ta connaissance.
+</div>
+
+
+<div class="message">
+
+J'aimerais découvrir ton histoire.
+
+Tu peux commencer où tu veux :
+un souvenir important,
+un moment qui t'a changé,
+une passion,
+un rêve...
+
+</div>
+
+
+<div class="message user">
+
+À toi d'écrire ton histoire ✍️
+
+</div>
+
+
+<textarea id="story" 
+placeholder="Écris ici..."
+style="width:90%;height:120px;border-radius:20px;padding:15px;font-size:16px;">
+</textarea>
+
 
 <br>
 
@@ -107,9 +164,37 @@ Comment puis-je t'appeler ?
 Continuer mon histoire
 </button>
 
+
+</div>
+
+
 </div>
 
 </div>
+
+
+
+<script>
+
+function start(){
+
+let name=document.getElementById("name").value;
+
+if(name.trim()==""){
+alert("Écho aimerait connaître ton prénom 😊");
+return;
+}
+
+document.getElementById("username").innerHTML=name;
+
+document.getElementById("welcome").style.display="none";
+
+document.getElementById("conversation").style.display="block";
+
+}
+
+</script>
+
 
 </body>
 </html>
